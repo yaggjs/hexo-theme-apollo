@@ -1,35 +1,23 @@
 ![hexo-theme-apollo](https://cloud.githubusercontent.com/assets/9530963/13026956/08e76eca-d277-11e5-8bfc-2e80cea20a0d.png)
 
-## 文档
-
-- [中文文档](https://github.com/pinggod/hexo-theme-apollo/blob/master/doc%2Fdoc-zh.md)
-- [Document](https://github.com/pinggod/hexo-theme-apollo/blob/master/doc%2Fdoc-en.md)
-
-## 贡献
-
-该项目不再接受添加新特性、功能的 pull request，所有创造性的想法请 fork 该项目之后自由发挥。
-
-## 安装
-
-[![asciicast](https://asciinema.org/a/emrvroa9054hz6k8ise0uxh2u.png)](https://asciinema.org/a/emrvroa9054hz6k8ise0uxh2u)
+## Install
 
 ``` bash
 hexo init Blog 
 cd Blog 
 npm install
 npm install --save hexo-renderer-jade hexo-generator-feed hexo-generator-sitemap hexo-browsersync hexo-generator-archive
-git clone https://github.com/pinggod/hexo-theme-apollo.git themes/apollo
+git clone https://github.com/yaggjs/hexo-theme-apollo.git themes/apollo
 ```
 
-## 启用
+## Enable
 
-修改 `_config.yml` 的 `theme` 配置项为 `apollo`:
+Go to `_config.yml` and change the `theme` property to `apollo` value:
 
 ```yaml
 theme: apollo
 
-# 在归档页面显示所有文章
-# 需要上面安装的 hexo-generator-archive 插件支持
+# Show all posts in archive page using hexo-generator-archive
 archive_generator:
     per_page: 0
     yearly: false
@@ -37,13 +25,70 @@ archive_generator:
     daily: false
 ```
 
-## 更新
+## Update
 
 ``` bash
 cd themes/apollo 
 git pull
 ```
 
-## License
+## Meta Description
 
-MIT
+If you want to set meta description information, please set `desc` property and value to each post — the better method is setting default `desc` property to your scaffolds files, just like:
+
+```md
+title: Lorem ipsum dolor
+date: 2015-12-31 14:49:13
+desc: Lorem ipsum dolor sit amet, consectetur.
+---
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, non numquam saepe ex ut. Deleniti culpa inventore consectetur nam saepe!
+```
+
+result:
+
+```html
+<meta name="description" content="Lorem ipsum dolor sit amet, consectetur.">
+```
+
+If there is no `desc` property or value, hexo-theme-apollo will use `page.title` and `page.author` instead of it. 
+
+## H1~H6 Title
+
+In fact, Hexo-theme-apollo only supoort two kinds of titles: h1~h3 belongs to what i called `big title`, and h4~h6 belongs to `small title`, this means that `#` and `###` have the same styles。
+
+Why i do this? I support that an article should be short and clean, dont let visitors spend much time to recognise the blog post structure.
+
+Another reason is that: i don't have met a great styles to distinguish between different kinds of headers.If you have gread idea about it, please let me know.
+
+## post excerpt
+
+If you want to show excerpt(core content of article) to your visitors, do add HTML comment tag `<!--more-->` before else content，and finally the tag will be parsed to be a variable which represents post excerpt by Hexo:
+
+![https://cloud.githubusercontent.com/assets/9530963/14064341/0fa3c754-f432-11e5-8ad7-5d063d4a0886.png](https://cloud.githubusercontent.com/assets/9530963/14064341/0fa3c754-f432-11e5-8ad7-5d063d4a0886.png)
+
+## Comment Plugin
+
+Hexo-theme-apollo support two comment plugins: Disqus and Duoshuo. please set like this in your `themes/apollo/_config.yml`:
+
+```yaml
+disqus: seansun
+```
+
+## Danger Block
+
+Use html tag with special class property to render block:
+
+```html
+<div class="tip">
+    <!-- tip here -->
+</div>
+```
+
+## Legends
+
+This may lead to disappointed: i don't have spacial tool to create diagrams，but just Microsoft Powerpoint。
+
+## Last but not Least
+
+Focus on blog posts, not blog's styles. Have fun :) !
